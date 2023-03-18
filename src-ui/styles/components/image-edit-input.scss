@@ -1,0 +1,12 @@
+.image-edit-input__uploader {
+    @apply grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.image-edit-input__uploader .file-upload__label {
+    @apply w-full;
+}
+
+.image-edit-input__wrap {
+    @apply flex items-center;
+}

@@ -1,0 +1,20 @@
+.file-upload {
+    @apply flex items-center mb-1;
+}
+
+.file-upload__btn {
+    @apply py-1;
+}
+
+.file-upload__label,
+.file-upload__name {
+    @apply whitespace-nowrap cursor-pointer px-2 py-1;
+}
+
+.file-upload__popup {
+    @apply fixed z-[50] left-0 top-0 w-full h-full cursor-pointer dark:bg-opacity-60 dark:bg-dark-primary flex justify-center items-center p-8;
+}
+
+.file-upload__popup img {
+    @apply max-h-full;
+}

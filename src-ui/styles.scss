@@ -1,0 +1,103 @@
+@import "styles/common.scss";
+
+@import "styles/app.scss";
+
+@import "styles/components/auto-complete.scss";
+@import "styles/components/audio-input.scss";
+@import "styles/components/audio-record.scss";
+@import "styles/components/auth.scss";
+@import "styles/components/avatar.scss";
+@import "styles/components/chat-list-item.scss";
+@import "styles/components/chat-params.scss";
+@import "styles/components/file-upload.scss";
+@import "styles/components/image-edit-input.scss";
+@import "styles/components/image-list.scss";
+@import "styles/components/image-params.scss";
+@import "styles/components/prompt.scss";
+@import "styles/components/prompt-speaker.scss";
+@import "styles/components/proxy.scss";
+
+@import "styles/components/topic-item.scss";
+@import "styles/components/topic-filter.scss";
+@import "styles/components/topic-list.scss";
+
+@import "styles/views/audio.scss";
+@import "styles/views/home.scss";
+@import "styles/views/img-var.scss";
+@import "styles/views/topic-create.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input {
+  @apply px-2.5 py-1.5 border border-transparent rounded outline-none dark:bg-dark-quaternary;
+}
+
+.input--sm {
+  @apply px-1.5 py-0.5 border border-transparent rounded outline-none dark:bg-dark-quaternary;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.visible {
+  @apply translate-x-0;
+}
+
+.invisible {
+  @apply hidden;
+}
+
+.mask {
+  @apply fixed inset-0 z-10 dark:bg-opacity-60 dark:bg-dark-primary;
+}
+
+.btn {
+  @apply px-2.5 py-1.5 rounded;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  @apply text-light-secondary;
+  backdrop-filter: blur(8px) brightness(0.8);
+}
+
+.notify {
+  @apply absolute z-[100] top-2 left-1/2 -translate-x-1/2 px-4 py-2 rounded;
+}
+
+.success {
+  @apply bg-green-100 text-green-500;
+}
+
+.warn {
+  @apply bg-orange-100 text-orange-500;
+}
+
+.info {
+  @apply bg-blue-100 text-blue-500;
+}
+
+.error {
+  @apply bg-rose-100 text-rose-500;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply border-none rounded dark:bg-dark-quaternary;
+}
+
+::-webkit-scrollbar-track {
+  @apply dark:bg-transparent;
+}
+
+::-webkit-scrollbar-button {
+  @apply hidden;
+}
+
+::-webkit-scrollbar {
+  @apply w-[2px] h-[2px];
+}

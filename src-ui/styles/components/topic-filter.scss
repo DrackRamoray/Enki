@@ -1,0 +1,27 @@
+.topic-filter {
+  @apply flex flex-nowrap items-center px-1.5 py-1;
+}
+
+.topic-filter__wrap {
+  @apply relative flex-1 mr-1;
+}
+
+.topic-filter__input {
+  @apply w-full min-w-0;
+}
+
+.topic-filter .topic-filter__input {
+  @apply pr-6;
+}
+
+.topic-filter__trigger.btn {
+  @apply px-1.5 py-0.5 mt-1.5 relative;
+}
+
+.topic-filter__badge {
+  @apply absolute top-1 right-1 p-0.5 rounded-full dark:bg-dark-septenary;
+}
+
+.topic-filter .dropdown__popup {
+  @apply top-12 w-60;
+}

@@ -1,0 +1,19 @@
+.proxy__popup {
+  @apply absolute top-12 right-20 flex flex-col space-y-6 popup;
+}
+
+.proxy__radio-group {
+  @apply inline-flex border rounded divide-x dark:divide-dark-quinary dark:border-dark-quaternary dark:bg-dark-quaternary;
+}
+
+.proxy__radio-group__label {
+  @apply block px-2.5 py-1.5 cursor-pointer peer-checked:text-light-info dark:text-light-secondary;
+}
+
+.proxy__operation {
+  @apply flex justify-end;
+}
+
+.proxy__operation button {
+  @apply pl-3;
+}

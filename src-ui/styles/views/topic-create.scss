@@ -1,0 +1,19 @@
+.topic-create__select {
+  @apply relative flex justify-between items-center w-64;
+}
+
+.topic-create__select__input {
+  @apply absolute top-0 left-0 z-[1] w-full h-full opacity-0 cursor-pointer;
+}
+
+.topic-create__select__display {
+  @apply flex w-full justify-between items-center px-2.5 py-1.5 rounded dark:bg-dark-quaternary dark:border-transparent;
+}
+
+.topic-create__select__indicator {
+  @apply dark:text-gray-400;
+}
+
+.topic-create__select__input:checked ~ .topic-create__select__display .topic-create__select__indicator {
+  @apply text-gray-300;
+}

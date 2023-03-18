@@ -1,0 +1,88 @@
+.chat-list__responder {
+  @apply grid;
+  align-items: center;
+  grid-column-gap: 8px;
+  grid-template-columns: 40px auto 40px;
+}
+
+.chat-list__responder {
+  justify-content: start;
+}
+
+.chat-list__avatar {
+  @apply w-8 h-8;
+}
+
+.chat-list__responder .chat-list__avatar,
+.chat-list--loading {
+  @apply dark:text-light-success;
+}
+
+.chat-list--loading {
+  @apply h-3/4 border-r-2 border-r-gray-500;
+  animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(107, 114, 128); }
+}
+
+.chat-list__responder__body {
+  @apply relative;
+  min-width: calc(100% - 96px);
+}
+
+.chat-list__responder__body.multiple {
+  @apply pl-5 pr-5;
+}
+
+.chat-list__responder__body p {
+  @apply mb-2;
+}
+
+.chat-list__responder__body pre {
+  @apply overflow-x-auto px-4 rounded-lg mb-2;
+}
+
+.chat-list__responder__body th,
+.chat-list__responder__body td {
+  @apply px-2 py-2;
+}
+
+.chat-list__responder__body thead tr,
+.chat-list__responder__body tbody tr:nth-child(even) {
+  @apply dark:bg-dark-quaternary;
+}
+
+.chat-list__responder__body thead tr:first-of-type th:first-of-type {
+  border-top-left-radius: 8px;
+}
+
+.chat-list__responder__body thead tr:first-of-type th:last-of-type {
+  border-top-right-radius: 8px;
+}
+
+.chat-list__responder__body tbody tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 8px;
+}
+
+.chat-list__responder__body tbody tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 8px;
+}
+
+.chat-list__responder__switcher {
+  @apply absolute top-0 h-full flex items-center cursor-pointer;
+
+  &:first-of-type {
+    @apply -left-3.5;
+  }
+
+  &:last-of-type {
+    @apply -right-2.5;
+  }
+}
+
+.chat-list__responder__switcher.disabled {
+  @apply cursor-default dark:text-dark-quinary;
+}

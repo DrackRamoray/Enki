@@ -1,0 +1,19 @@
+.audio-input__wrap {
+  @apply min-w-full max-w-full;
+}
+
+.audio-params__popup {
+  @apply fixed bottom-[60px] right-3 w-72 space-y-2 px-8 py-8 bordered-lg;
+}
+
+.audio-params__popup .auto-complete__popup {
+  @apply absolute w-full bottom-[40px] left-[-1px];
+}
+
+.audio-params__input {
+  @apply w-full inline-flex justify-between;
+}
+
+.audio-params__number {
+  @apply params__number inline-flex justify-between items-center w-full;
+}

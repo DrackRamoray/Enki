@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "src-shared",
+    "src-tauri",
+    "src-ui",
+]

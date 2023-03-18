@@ -1,0 +1,18 @@
+.audio-responder {
+  @apply grid py-8 relative w-full overflow-hidden;
+  align-items: center;
+  grid-column-gap: 8px;
+  grid-template-columns: 40px auto 40px;
+}
+
+.audio-responder__message {
+  overflow: auto;
+}
+
+.audio-responder pre {
+  @apply overflow-auto pr-2;
+}
+
+.audio-responder__avatar {
+  @apply dark:text-light-success;
+}

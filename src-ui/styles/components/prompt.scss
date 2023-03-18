@@ -1,0 +1,12 @@
+.prompt__editor {
+  @apply w-full max-h-20 border rounded-md overflow-auto outline-none pl-1.5 pr-8 py-1.5 focus:ring-0 focus-visible:ring-0 dark:border-dark-septenary;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.prompt__send-btn {
+  @apply absolute top-1/2 right-2 -translate-y-1/2;
+}
+
+.prompt__send-btn[disabled] {
+  @apply dark:text-dark-quinary;
+}

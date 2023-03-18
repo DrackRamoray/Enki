@@ -1,0 +1,16 @@
+.auth-popup {
+  @apply popup absolute top-12 right-14;
+}
+
+.auth-popup__wrapper {
+  @apply flex items-center -mr-2;
+}
+
+.auth-popup__wrapper input {
+  @apply mr-3;
+}
+
+.auth-popup__btn {
+  @apply border border-transparent rounded;
+  transition: border .3s ease-in-out;
+}

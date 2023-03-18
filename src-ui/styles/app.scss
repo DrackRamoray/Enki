@@ -1,0 +1,23 @@
+.header {
+  @apply flex justify-between items-center px-2 py-1;
+}
+
+.header__toggle-btn {
+  @apply text-[0px];
+}
+
+.header__topic--add {
+  @apply sm:ml-53;
+}
+
+.header__btn-group {
+  @apply flex items-center;
+}
+
+.aside {
+  @apply fixed z-20 top-0 left-0 w-64 h-full overflow-y-auto transition-transform -translate-x-full sm:translate-x-0 dark:bg-dark-secondary;
+}
+
+.main {
+  @apply h-full overflow-auto pb-[54px] pl-2 sm:pl-66 pt-2;
+}

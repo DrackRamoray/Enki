@@ -1,0 +1,30 @@
+.prompt__speaker {
+  @apply grid;
+  align-items: center;
+  grid-column-gap: 8px;
+  grid-template-columns: 40px auto 40px;
+}
+
+.prompt__speaker {
+  justify-content: end;
+}
+
+.prompt__speaker__message {
+  @apply py-5 rounded-lg dark:text-light-highlight;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  word-break: break-all;
+}
+
+.prompt__speaker__image {
+  @apply flex flex-nowrap justify-end items-center space-x-8;
+
+  img {
+    @apply w-64 h-64 mb-8;
+    object-fit: cover;
+  }
+}
+
+.prompt__speaker__audio {
+  @apply mb-4;
+}
