@@ -1,0 +1,84 @@
+.image-list {
+  @apply grid py-8;
+  align-items: center;
+  grid-column-gap: 8px;
+  grid-template-columns: 40px auto 40px;
+}
+
+.image-list__avatar {
+  @apply text-light-success;
+}
+
+.image-list__container {
+  @apply relative w-64 h-64 overflow-hidden rounded-lg;
+}
+
+.image-list__image {
+  @apply duration-700 ease-in-out absolute inset-0 transition-transform transform z-[1] cursor-pointer;
+
+  & img {
+    @apply absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+  }
+}
+
+.image-list__image.left {
+  @apply -translate-x-full;
+}
+
+.image-list__image.right {
+  @apply translate-x-full;
+}
+
+.image-list__image.active {
+  @apply translate-x-0 z-[2];
+}
+
+.image-list__mask.mask {
+  @apply z-[50];
+}
+
+.image-list--prev,
+.image-list--next {
+  @apply absolute h-full flex items-center cursor-pointer z-[3];
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    @apply dark:bg-[rgba(0,0,0,0.15)]
+  }
+
+  &.disabled {
+    @apply cursor-default;
+  }
+}
+
+.image-list--prev {
+  @apply top-0 left-0;
+}
+
+.image-list--next {
+  @apply top-0 right-0;
+}
+
+.image-list--selection {
+  @apply absolute bottom-2 left-1/2 -translate-x-1/2 z-[3] space-x-1.5 whitespace-nowrap;
+
+  & button {
+    @apply w-3 h-3 rounded-full dark:bg-[rgba(0,0,0,0.45)];
+  }
+
+  & button.active {
+    @apply dark:bg-[rgba(0,0,0,0.2)];
+  }
+}
+
+.image-list--selected {
+  @apply fixed flex justify-center items-center inset-0 z-[51] cursor-pointer dark:bg-opacity-60 dark:bg-dark-primary;
+}
+
+.image-list__zoom {
+  @apply fixed z-[52] bottom-8 left-1/2 -translate-x-1/2 space-x-2;
+}
+
+.image-list--loading {
+  @apply animate-pulse;
+}

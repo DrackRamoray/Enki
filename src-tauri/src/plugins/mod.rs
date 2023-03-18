@@ -1,0 +1,15 @@
+#[path = "audio-transcript.rs"]
+pub mod audio_transcript;
+#[path = "audio-translate.rs"]
+pub mod audio_translate;
+pub mod auth;
+pub mod chat;
+pub mod database;
+#[path = "image-edit.rs"]
+pub mod image_edit;
+#[path = "image-generate.rs"]
+pub mod image_generate;
+#[path = "image-variate.rs"]
+pub mod image_variate;
+pub mod proxy;
+pub mod topic;

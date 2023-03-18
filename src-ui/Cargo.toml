@@ -1,0 +1,19 @@
+[package]
+name = "enki-ui"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+enki-shared = { path = "../src-shared" }
+js-sys = { version = "0.3.61" }
+leptos = { version = "=0.2.2" }
+leptos_dom = { version = "=0.2.2" }
+leptos_reactive = { version = "=0.2.2" }
+leptos_router = { version = "=0.2.2", features = ["csr"] }
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.5.0"
+tauri-sys = { git = "https://github.com/JonasKruckenberg/tauri-sys", rev = "0c864e", features = ["all"] }
+wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4"
+web-sys = { version = "0.3.61", features = ["Element", "ScrollIntoViewOptions", "ScrollBehavior"] }

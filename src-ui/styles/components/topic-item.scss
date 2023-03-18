@@ -1,0 +1,23 @@
+.topic-item {
+  @apply flex flex-nowrap items-center px-2.5 py-0.5;
+}
+
+.topic-item.active {
+  @apply bg-dark-tertiary;
+}
+
+.topic-item__input {
+  @apply grow min-w-0;
+}
+
+.topic-item__title {
+  @apply grow block w-full px-2.5 py-1.5 border border-transparent whitespace-nowrap overflow-hidden text-ellipsis;
+}
+
+.topic-item.active .topic-item__title {
+  @apply text-light-info;
+}
+
+.topic-item:hover .topic-item__btn-group {
+  @apply inline-flex flex-nowrap items-center;
+}

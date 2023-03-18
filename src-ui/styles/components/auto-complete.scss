@@ -1,0 +1,11 @@
+.auto-complete__popup {
+  @apply absolute w-full mt-2 pt-8 pb-6 z-20 bordered-lg;
+}
+
+.auto-complete__popup .dropdown__item {
+  text-transform: none;
+}
+
+.auto-complete__empty {
+  @apply flex justify-center;
+}

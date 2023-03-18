@@ -1,0 +1,11 @@
+.chat-params__popup {
+  @apply fixed bottom-[60px] right-3 w-72 px-8 py-8 bordered-lg;
+}
+
+.chat-params__placeholder {
+  @apply absolute text-sm left-2 top-1 pointer-events-none dark:text-dark-quinary;
+}
+
+.chat-params__editable {
+  @apply editable min-h-[40px] max-h-20;
+}

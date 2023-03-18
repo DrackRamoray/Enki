@@ -1,0 +1,7 @@
+.avatar__btn {
+  @apply w-9 h-9 p-1 rounded-full ring-2 dark:ring-dark-quinary;
+}
+
+button.avatar__btn:last-of-type {
+  @apply ml-2;
+}

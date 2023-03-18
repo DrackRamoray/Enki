@@ -1,0 +1,138 @@
+.home__nav {
+  @apply h-full flex justify-center items-center overflow-hidden;
+}
+
+.home__nav-container {
+  @apply grid grid-rows-[152px_152px_152px] grid-cols-[88px_88px_88px_88px_88px] scale-[0.85];
+}
+
+.home__nav-item {
+  @apply relative w-[200px] h-[173.20508px] rotate-[30deg] z-[0] cursor-pointer;
+}
+
+.home__nav-item:nth-child(1) {
+  @apply row-[1] col-[3];
+}
+
+.home__nav-item:nth-child(2) {
+  @apply row-[2] col-start-[2] col-end-[4];
+}
+
+.home__nav-item:nth-child(3) {
+  @apply row-[2] col-start-[4] col-end-[6];
+}
+
+.home__nav-item:nth-child(4) {
+  @apply row-[3] col-start-[1] col-end-[3];
+}
+
+.home__nav-item:nth-child(5) {
+  @apply row-[3] col-start-[3] col-end-[5];
+}
+
+.home__nav-item:nth-child(6) {
+  @apply row-[3] col-start-[5] col-end-[7];
+}
+
+.home__nav-item--hex {
+  @apply absolute top-0 left-[50px] w-[100px] h-[173.20508px];
+}
+
+.home__nav-item--hex:first-child {
+  @apply z-[0] scale-[0.9] transition-[all] duration-[300ms];
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.home__nav-item--hex:last-child {
+  @apply z-[1] transition-[all] duration-[300ms];
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.home__nav-item--hex div {
+  @apply box-border absolute top-0 w-[100px] h-[173.20508px] origin-center;
+}
+
+.home__nav-item--hex div::before,
+.home__nav-item--hex div::after {
+  @apply content-[""] absolute w-full h-[3px] transition-[all] duration-[300ms] delay-[0s] dark:bg-dark-quaternary;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.home__nav-item--hex div:before {
+  @apply top-0;
+}
+
+.home__nav-item--hex div:after {
+  @apply bottom-0;
+}
+
+.home__nav-item--hex div:nth-child(1) {
+  @apply rotate-[0deg];
+}
+
+.home__nav-item--hex div:nth-child(2) {
+  @apply rotate-[60deg];
+}
+
+.home__nav-item--hex div:nth-child(3) {
+  @apply rotate-[120deg];
+}
+
+.home__nav-item:hover {
+  @apply z-[1];
+}
+
+.home__nav-item:first-child {
+  @apply ml-0;
+}
+
+.home__nav-item:hover .home__nav-item--hex:last-child {
+  @apply opacity-100 scale-[1.3];
+}
+
+.home__nav-item:hover .home__nav-item--hex:first-child {
+  @apply opacity-100 scale-[1.2];
+}
+
+.home__nav-item:hover .home__nav-item--hex:first-child div:before,
+.home__nav-item:hover .home__nav-item--hex:first-child div:after {
+  @apply h-[5px];
+}
+
+.home__nav-item:hover .home__nav-item--hex div::before,
+.home__nav-item:hover .home__nav-item--hex div::after {
+  @apply dark:bg-light-success;
+}
+
+.home__nav-item__content {
+  @apply relative block h-[180px] mx-auto my-0 text-center rotate-[-30deg] w-[156px] transition-[all] duration-[300ms] delay-[0s];
+  transition-timing-function: ease;
+}
+
+.home__nav-item__content .icon {
+  @apply block text-[36px] leading-[30px] mb-[11px];
+}
+
+.home__nav-item__content svg {
+  @apply absolute top-[-13px] left-[-7px] scale-[0.87] z-[-1] transition-[all] duration-[300ms] delay-[0s] dark:fill-dark-quaternary;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.home__nav-item:hover .home__nav-item__content svg {
+  @apply scale-[0.97];
+}
+
+.home__nav-item__content:hover,
+.home__nav-item__content:focus {
+  @apply dark:text-light-secondary;
+  text-decoration: none;
+  outline: 0 none;
+}
+
+.home__nav-item__content__inner {
+  @apply absolute top-1/2 left-1/2 mt-[-3px] mr-0 mb-0 ml-[2px] -translate-x-1/2 -translate-y-1/2;
+}
+
+.home__nav-item__title {
+  @apply block text-[14px] leading-[24px] tracking-[1px] uppercase font-sans;
+}

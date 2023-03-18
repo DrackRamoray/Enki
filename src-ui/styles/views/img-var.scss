@@ -1,0 +1,11 @@
+.img-var__footer {
+  @apply pr-0 justify-between items-center;
+}
+
+.img-var__footer .file-upload {
+    @apply grow;
+
+    & span {
+        @apply w-full;
+    }
+}
