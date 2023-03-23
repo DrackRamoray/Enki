@@ -25,22 +25,26 @@ async fn edit_image<R: Runtime>(
     category: ImageCategory,
     topic_id: i64,
 ) -> Result<Vec<String>, Error> {
-    let instance = db.get_instance().lock().await;
-    let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
+    let (image_id, client) = {
+        let instance = db.get_instance().lock().await;
+        let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
 
-    println!("\n image edit start ... \n");
+        println!("\n image edit start ... \n");
 
-    let image_id = Image::create_image(
-        pool,
-        Some(prompt.clone()),
-        Some(convert_src(image.as_str())),
-        mask.clone().map(|m| convert_src(m.as_str())),
-        category.to_string(),
-        topic_id,
-    )
-    .await?;
+        let image_id = Image::create_image(
+            pool,
+            Some(prompt.clone()),
+            Some(convert_src(image.as_str())),
+            mask.clone().map(|m| convert_src(m.as_str())),
+            category.to_string(),
+            topic_id,
+        )
+        .await?;
 
-    let client = create_client(pool).await?;
+        let client = create_client(pool).await?;
+
+        (image_id, client)
+    };
 
     let image_data = read(&image)?;
 
@@ -69,6 +73,8 @@ async fn edit_image<R: Runtime>(
         &response_text[0..1000.min(response_text.len())]
     );
 
+    let instance = db.get_instance().lock().await;
+    let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
     save_image(&app, pool, size, image_id, topic_id, response_text).await
 }
 

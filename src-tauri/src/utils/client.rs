@@ -6,6 +6,7 @@ use reqwest::header::HeaderMap;
 use reqwest::Client;
 use reqwest::Proxy;
 use sqlx::{Pool, Sqlite};
+use std::time::Duration;
 
 pub async fn create_client(pool: &Pool<Sqlite>) -> Result<Client, Error> {
     let proxy = KV::retrieve::<ProxyData>(pool, "proxy").await?;
@@ -24,10 +25,13 @@ pub async fn create_client(pool: &Pool<Sqlite>) -> Result<Client, Error> {
 
     headers.insert(&name, value);
 
-    let client = client.default_headers(headers);
-
-    client.build().map(|client| client).map_err(|err| {
-        println!("build client failed: {:?}", err);
-        Error::ReqError(err)
-    })
+    client
+        .default_headers(headers)
+        .timeout(Duration::from_secs(300))
+        .build()
+        .map(|client| client)
+        .map_err(|err| {
+            println!("build client failed: {:?}", err);
+            Error::ReqError(err)
+        })
 }

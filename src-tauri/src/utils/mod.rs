@@ -1,3 +1,5 @@
+#[path = "audio-trans.rs"]
+pub mod audio_trans;
 #[path = "auth-header.rs"]
 pub mod auth_header;
 pub mod client;

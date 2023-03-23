@@ -27,28 +27,32 @@ async fn start_chatting(
     provide_previous_messages: bool,
     topic_id: i64,
 ) -> Result<Vec<ChatMessage>, Error> {
-    let instance = db.get_instance().lock().await;
-    let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
+    let (chat_id, client, req_params) = {
+        let instance = db.get_instance().lock().await;
+        let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
 
-    let chat_id = Chat::create_chat(pool, "user", message.as_str(), topic_id).await?;
+        let chat_id = Chat::create_chat(pool, "user", message.as_str(), topic_id).await?;
 
-    let req_params = ChatParams::gen_params(
-        pool,
-        model.to_string(),
-        message,
-        instruction,
-        temperature,
-        top_p,
-        n,
-        max_tokens,
-        presence_penalty,
-        frequency_penalty,
-        provide_previous_messages,
-        topic_id,
-    )
-    .await?;
+        let req_params = ChatParams::gen_params(
+            pool,
+            model.to_string(),
+            message,
+            instruction,
+            temperature,
+            top_p,
+            n,
+            max_tokens,
+            presence_penalty,
+            frequency_penalty,
+            provide_previous_messages,
+            topic_id,
+        )
+        .await?;
 
-    let client = create_client(pool).await?;
+        let client = create_client(pool).await?;
+
+        (chat_id, client, req_params)
+    };
 
     print!("\n params = {:?} \n", req_params);
 
@@ -71,15 +75,22 @@ async fn start_chatting(
 
     for c in choices {
         let markdown = convert_to_html(c.message.content.as_str());
-        ChatResponse::create_response(
-            pool,
-            c.message.role.as_str(),
-            c.message.content.as_str(),
-            markdown.as_str(),
-            chat_id,
-            topic_id,
-        )
-        .await?;
+
+        {
+            let instance = db.get_instance().lock().await;
+            let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
+
+            ChatResponse::create_response(
+                pool,
+                c.message.role.as_str(),
+                c.message.content.as_str(),
+                markdown.as_str(),
+                chat_id,
+                topic_id,
+            )
+            .await?;
+        }
+
         ans.push(ChatMessage {
             role: c.message.role,
             content: markdown,

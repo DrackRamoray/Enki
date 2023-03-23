@@ -23,22 +23,26 @@ pub async fn generate_image<R: Runtime>(
     category: ImageCategory,
     topic_id: i64,
 ) -> Result<Vec<String>, Error> {
-    let instance = db.get_instance().lock().await;
-    let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
+    let (image_id, client) = {
+        let instance = db.get_instance().lock().await;
+        let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
 
-    print!("\n image generate start ... \n");
+        print!("\n image generate start ... \n");
 
-    let image_id = Image::create_image(
-        pool,
-        Some(prompt.clone()),
-        None,
-        None,
-        category.to_string(),
-        topic_id,
-    )
-    .await?;
+        let image_id = Image::create_image(
+            pool,
+            Some(prompt.clone()),
+            None,
+            None,
+            category.to_string(),
+            topic_id,
+        )
+        .await?;
 
-    let client = create_client(pool).await?;
+        let client = create_client(pool).await?;
+
+        (image_id, client)
+    };
 
     let params = ImageGenParams {
         prompt,
@@ -60,6 +64,8 @@ pub async fn generate_image<R: Runtime>(
         &response_text[0..1000.min(response_text.len())]
     );
 
+    let instance = db.get_instance().lock().await;
+    let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
     save_image(&app, pool, size, image_id, topic_id, response_text).await
 }
 

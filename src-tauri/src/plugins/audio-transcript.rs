@@ -1,14 +1,9 @@
+use crate::plugins::database::DbInstance;
+use crate::utils::audio_trans::trans_audio;
+use crate::utils::constants::CHATGPT_AUDIO_TRANSCRIPT_URL;
+use crate::{model::audio::Audio, utils::error::Error};
 use enki_shared::{audio::AudioData, audio_format::AudioFormat, audio_model::AudioModel};
-use reqwest::multipart::{Form, Part};
-use std::fs::read;
 use tauri::{plugin::Plugin, Invoke, Runtime, State};
-
-use crate::{
-    model::audio::Audio,
-    utils::{client::create_client, constants::CHATGPT_AUDIO_TRANSCRIPT_URL, error::Error},
-};
-
-use super::database::DbInstance;
 
 #[tauri::command]
 async fn transcript_audio(
@@ -21,48 +16,18 @@ async fn transcript_audio(
     language: Option<String>,
     topic_id: i64,
 ) -> Result<String, Error> {
-    let instance = db.get_instance().lock().await;
-    let pool = instance.as_ref().ok_or(Error::DatabaseNotLoaded)?;
-
-    println!("\n transcript audio start ... \n ");
-
-    let audio_id = Audio::create_audio(pool, file.as_str(), prompt.as_str(), topic_id).await?;
-
-    let client = create_client(pool).await?;
-
-    let audio_data = read(&file)?;
-
-    let mut form = Form::new()
-        .text("model", model.to_string())
-        .text("prompt", prompt)
-        .text("response_format", fmt.to_string())
-        .text("temperature", temperature.to_string())
-        .part("file", Part::bytes(audio_data).file_name(file));
-
-    if let Some(lang) = language {
-        form = form.text("language", lang);
-    }
-
-    let response_text = client
-        .post(CHATGPT_AUDIO_TRANSCRIPT_URL)
-        .multipart(form)
-        .send()
-        .await?
-        .text()
-        .await?;
-
-    println!("\n response finished: {:?} \n", &response_text);
-    println!("{}", fmt == AudioFormat::TXT);
-
-    let text = if fmt == AudioFormat::TXT {
-        format!("<code>{}</code>", response_text)
-    } else {
-        format!("<pre>{}</pre>", response_text)
-    };
-
-    Audio::update_audio(pool, text.as_str(), audio_id).await?;
-
-    Ok(text)
+    trans_audio(
+        db,
+        file,
+        model,
+        prompt,
+        fmt,
+        temperature,
+        language,
+        topic_id,
+        CHATGPT_AUDIO_TRANSCRIPT_URL,
+    )
+    .await
 }
 
 #[tauri::command]

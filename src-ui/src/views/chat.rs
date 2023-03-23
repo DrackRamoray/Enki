@@ -32,6 +32,7 @@ pub fn Chat(cx: Scope) -> impl IntoView {
             let params = FetchTopic {
                 id: app_ctx.active_topic_id.get(),
             };
+
             match tauri::invoke::<_, Vec<ChatRecord>>("plugin:chat|get_chatting_record", &params)
                 .await
             {
