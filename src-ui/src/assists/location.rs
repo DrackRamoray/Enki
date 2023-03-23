@@ -19,6 +19,7 @@ pub fn location_to_topic(cx: Scope, tc: TopicCategory, id: i64) {
 
     app_ctx.set_active_topic_ctg.set(index);
     app_ctx.set_active_topic_id.set(id);
+    app_ctx.set_sending.set(false);
 }
 
 pub fn location_to_home(cx: Scope) {
@@ -34,6 +35,7 @@ pub fn location_to_home(cx: Scope) {
 
     app_ctx.set_active_topic_id.set(0);
     app_ctx.set_active_topic_ctg.set(-1);
+    app_ctx.set_sending.set(false);
 }
 
 pub fn location_to_topic_create(cx: Scope) {
@@ -49,4 +51,5 @@ pub fn location_to_topic_create(cx: Scope) {
 
     app_ctx.set_active_topic_id.set(0);
     app_ctx.set_active_topic_ctg.set(-1);
+    app_ctx.set_sending.set(false);
 }
