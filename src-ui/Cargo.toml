@@ -17,3 +17,6 @@ tauri-sys = { git = "https://github.com/JonasKruckenberg/tauri-sys", rev = "0c86
 wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
 wasm-bindgen-futures = "0.4"
 web-sys = { version = "0.3.61", features = ["Element", "ScrollIntoViewOptions", "ScrollBehavior"] }
+
+[features]
+win = ["enki-shared/win"]
