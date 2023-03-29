@@ -1,5 +1,6 @@
 .chat-params__popup {
-  @apply fixed bottom-[60px] right-3 w-72 px-8 py-8 bordered-lg;
+  @apply fixed bottom-[60px] right-3 w-72 px-8 py-8 bordered-lg overflow-y-auto;
+  max-height: calc(100% - 72px);
 }
 
 .chat-params__placeholder {

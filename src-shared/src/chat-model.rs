@@ -6,11 +6,23 @@ pub enum ChatModel {
     GPT,
     #[serde(rename = "gpt-3.5-turbo-0301")]
     GPT0301,
+    #[serde(rename = "gpt-4-32k-0314")]
+    GPT432K0314,
+    #[serde(rename = "gpt-4-32k")]
+    GPT432K,
+    #[serde(rename = "gpt-4-0314")]
+    GPT40314,
+    #[serde(rename = "gpt-4")]
+    GPT4,
 }
 
 pub const CHAT_MODELS: &[(ChatModel, &'static str)] = &[
     (ChatModel::GPT, "gpt-3.5-turbo"),
     (ChatModel::GPT0301, "gpt-3.5-turbo-0301"),
+    (ChatModel::GPT432K0314, "gpt-4-32k-0314"),
+    (ChatModel::GPT432K, "gpt-4-32k"),
+    (ChatModel::GPT40314, "gpt-4-0314"),
+    (ChatModel::GPT4, "gpt-4"),
 ];
 
 impl ToString for ChatModel {
